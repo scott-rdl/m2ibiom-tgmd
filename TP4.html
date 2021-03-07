@@ -1,0 +1,151 @@
+<!--
+  Scott RIDEL Janvier 2021
+  TP4 - UE1S2 M2 IBIOM
+  Université de Rouen
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+  <!-- ### HEAD ### -->
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="author" content="Scott RIDEL" />
+    <meta name="description" content="TP4 - UE1S2 M2 IBIOM" />
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <title>TP4</title>
+    <style>
+      body {
+      font-family: Helvetica;
+      margin: 50px 20%;}
+      
+      #canvas1 {
+        background-color: rgb(200, 200, 200);
+        border: 2px dashed blue;
+      }
+      
+      #plot-container {
+        height: 500px;
+        width: 700px"
+      }
+      
+      #zoom {
+        width: 200px;
+        -webkit-transition: 1s ease-in-out;
+        -webkit-transform: scale(1);
+        transition: 1s ease-in-out;
+      }
+      
+      #zoom:hover {
+        opacity: .5;
+        -webkit-transform: scale(3);
+        transform: scale(3);
+      }
+    </style>
+  <head>
+ 
+ 
+  <!-- ### BODY ### -->
+  <body>
+  
+    <h1>TP4</h1>
+    
+    <!-- ## SVG ## -->
+    <h2>Partie 1 &bull; SVG</h2>
+    <svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 250 250">
+      <circle cx="125" cy="125" r="100" stroke="rgb(100, 149, 255)" stroke-width="8" fill="rgb(255, 255, 0)" />
+        
+      <text x="50%" y="53%" text-anchor="middle" font-size="30">
+        <animateTransform attributeName="transform"
+          attributeType="XML"
+          type="rotate"
+          from="0 125 125"
+          to="360 125 125"
+          dur="1s"
+          repeatCount="1"/>
+        cercle
+      </text>
+    </svg>
+    
+    
+    <!-- ## CANVAS ## -->
+    <h2>Partie 2 &bull; CANVAS</h2>
+    <canvas id="canvas1" width="400" height="200"></canvas>
+    <br /><br />
+    <canvas id="canvas2"  width="400" height="400"></canvas>
+    <br /><br />   
+    
+    <script type='text/javascript'>
+      var ctx = document.getElementById('canvas1').getContext('2d');
+      ctx.translate(200, 100);
+      ctx.rotate((Math.PI / 2));
+      ctx.translate(-200, -100);
+      ctx.fillStyle = 'rgb(50, 50, 50)';
+      ctx.fillRect(100, 60, 200, 80);
+      
+      var ctx = document.getElementById('canvas2').getContext('2d');
+      const caseSize = canvas2.width / 8;
+      for (let i = 0; i < 10; i++) {
+        for (let j = 0; j < 10; j++) {
+          ctx.beginPath();
+          if ((i + j) % 2 === 0) {ctx.fillStyle = "red";} 
+          else {ctx.fillStyle = "black";}
+          ctx.fillRect(i * caseSize, j * caseSize, caseSize, caseSize);
+        }
+      }
+    </script>
+    
+    
+    <!-- ## HIGHCHARTS ## -->
+    <h2>Partie 3 &bull; HIGHCHARTS</h2>
+    <input type="button" style="padding: 20px 50px; " value="Suite de Syracuse" onclick="go()"/>
+    <br /><br /><hr>
+    <div id="plot-container" style="height: 500px; width: 700px"></div>
+    
+    
+    <!-- ## CSS ## -->
+    <h2>Partie 3 &bull; Animation CSS</h2>
+    <img id="zoom" />
+    
+    <script type='text/javascript'>
+    const google = 'data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNTMzLjUgNTQ0LjMiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTUzMy41IDI3OC40YzAtMTguNS0xLjUtMzcuMS00LjctNTUuM0gyNzIuMXYxMDQuOGgxNDdjLTYuMSAzMy44LTI1LjcgNjMuNy01NC40IDgyLjd2NjhoODcuN2M1MS41LTQ3LjQgODEuMS0xMTcuNCA4MS4xLTIwMC4yeiIgZmlsbD0iIzQyODVmNCIvPjxwYXRoIGQ9Ik0yNzIuMSA1NDQuM2M3My40IDAgMTM1LjMtMjQuMSAxODAuNC02NS43bC04Ny43LTY4Yy0yNC40IDE2LjYtNTUuOSAyNi05Mi42IDI2LTcxIDAtMTMxLjItNDcuOS0xNTIuOC0xMTIuM0gyOC45djcwLjFjNDYuMiA5MS45IDE0MC4zIDE0OS45IDI0My4yIDE0OS45eiIgZmlsbD0iIzM0YTg1MyIvPjxwYXRoIGQ9Ik0xMTkuMyAzMjQuM2MtMTEuNC0zMy44LTExLjQtNzAuNCAwLTEwNC4yVjE1MEgyOC45Yy0zOC42IDc2LjktMzguNiAxNjcuNSAwIDI0NC40bDkwLjQtNzAuMXoiIGZpbGw9IiNmYmJjMDQiLz48cGF0aCBkPSJNMjcyLjEgMTA3LjdjMzguOC0uNiA3Ni4zIDE0IDEwNC40IDQwLjhsNzcuNy03Ny43QzQwNSAyNC42IDMzOS43LS44IDI3Mi4xIDAgMTY5LjIgMCA3NS4xIDU4IDI4LjkgMTUwbDkwLjQgNzAuMWMyMS41LTY0LjUgODEuOC0xMTIuNCAxNTIuOC0xMTIuNHoiIGZpbGw9IiNlYTQzMzUiLz48L3N2Zz4=';
+    
+    const plane ='data:image/png;base64,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';
+    
+    document.getElementById("zoom").src = google;
+    
+      // --- SUITE ---
+      function go() {
+        var n=12, i=0
+        n = eval(prompt("Entrez un nombre: ",n))
+        nn = n
+        aff = n.toString()+ ", ";
+        while (n > 1) {
+          if (n%2 == 0) {n = n/2} else {n = 3*n+1}
+          aff = aff + n.toString() + ", ";
+          i++
+        }
+        alert("Syracuse("+nn+") = " + aff + "\n\n");
+      }
+      
+      // --- CHART ---
+      var chart = new Highcharts.Chart({ 
+        chart: { 
+          renderTo: 'plot-container', 
+          type: 'line'
+        }, 
+        title: {text: 'Les altitudes de vol de notre avion'},
+        subtitle: {text: "Valeurs de la suite de Syracuse calculées à partir de l'entier 12"}, 
+        yAxis: {title: {text: 'Altitude'}}, 
+        series: [{ 
+          name: "Vol de Syracuse",
+          data: [12, 6, 3, 10, 5, {
+            y: 16,
+            marker: {symbol: 'url('+plane+")"}
+          }, 8, 4, 2, 1]
+        }] 
+      }); 
+    </script>
+  </body>
+</html>

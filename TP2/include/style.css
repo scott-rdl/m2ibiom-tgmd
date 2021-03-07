@@ -1,0 +1,164 @@
+/*
+  Scott RIDEL Janvier 2021
+  TP2 - UE1S2 M2 IBIOM
+  Université de Rouen
+*/
+
+body {
+  max-width: 100%;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+#menu {
+  width: 20%;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  float: left;
+}
+
+#entreprise {
+  width: 80%;
+  float: right;
+}
+
+#entreprise h1 {
+  position: absolute;
+  top: 230px;
+  right: 30%;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 15px;
+  line-height: 1.5;
+  text-shadow: black 0.1em 0.1em 0.3em;
+  text-align: right;
+}
+
+#logo {
+  position: absolute;
+  padding: 20px;
+  height: 50px;
+}
+
+#facade {
+  height: 600px;
+  background-image: url("img/facade.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#principal {
+  width: 70%;
+  padding: 2% 15%;
+  background-color: #000;
+  color: #fff;
+  float: left;
+}
+
+#articles {
+  width: 70%;
+  padding: 2% 15%;
+  background-color: #fff;
+  float: left;
+}
+
+#articles td {
+  vertical-align: top;
+  padding: 10px 30px 10px 0;
+}
+
+#ml {
+  width: 100%;
+  bottom: 0;
+  background-color: #999;
+  position: fixed;
+}
+
+
+/* ARTICLES */
+
+article h1 {color: #e51f1f;}
+article h2 {color: #a7a7a7;}
+
+.cols {
+  column-gap: 40px;
+  column-rule: 1px solid #000;
+  text-align: justify;
+}
+  
+  
+/* MENU ET FOOTER*/
+
+nav ul, footer ul {
+  margin: 10px ;
+  padding: 0;
+  list-style: none;
+}
+
+nav li a, footer li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #000;
+  padding: 4px;
+}
+
+nav li a{
+  display: block;
+  color: #000;
+  line-height: 20px;
+}
+
+nav li a:hover, nav li .active {
+  background-color: #000;
+  color: #fff;
+}
+  
+nav img {
+  margin-bottom: 10px;
+  width: 25px;
+  display: none;
+}
+
+footer li {
+  display: inline;
+  margin-left: 20px;
+}
+  
+footer li a:hover {
+  background-color: #e51f1f;
+  color: #fff;
+}
+  
+/* RESPONSIVE */
+  
+@media only screen and (min-width: 1100px) {
+  .cols {column-count: 3;}
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1099px){
+  .cols {column-count: 2;}
+}
+
+@media only screen and (max-width: 700px){
+  nav a span {display: none;}
+  nav img {display: initial !important;}
+  footer li {display: block !important;}
+  .desc {display: none !important;}
+  #logo {height: 50px !important;}
+  #facade {height: 300px;}
+  
+  nav li a:hover, nav li .active {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  #entreprise h1 {
+    right: 5% !important;
+    top: 140px !important;
+    letter-spacing: 10px;
+    font-size: 15px;
+    top: 230px;
+  }
+}

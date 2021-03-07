@@ -1,0 +1,36 @@
+body {
+    font-family: Helvetica, sans-serif;
+    margin: 0; padding: 0;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 50px;
+    border-collapse : collapse;
+}
+
+table th {
+    background-color: black;
+    color: #fff;
+}
+
+thead th {
+    color: yellow;
+}
+
+footer {
+    background-color: violet;
+    padding: 15px 20px;
+    color: #fff;
+    margin: -20px;
+}
+h1 {
+    margin: 0; 
+    color:violet;
+}
+
+table tr:nth-child(odd) {background-color: #e5e5e5;}
+table td, thead tr th, tbody th {padding: 5px 10px;}
+thead th {color: yellow; padding-top: 10px !important;}
+tbody th {width: 150px;}

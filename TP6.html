@@ -1,0 +1,144 @@
+<!--
+  Scott RIDEL Janvier 2021
+  TP4 - UE1S2 M2 IBIOM
+  Université de Rouen
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+  <!-- ### HEAD ### -->
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="author" content="Scott RIDEL" />
+    <meta name="description" content="TP6 - UE1S2 M2 IBIOM" />
+    <title>TP6</title>
+    <style>
+      body {
+        font-family:  sans-serif;
+        background-color: #fff;
+        margin: 0 20%;
+        padding: 30px;
+      }
+      
+      input[type=button] {
+        border-radius: 3px;
+        padding: 5px 15px;
+        outline:none;
+        color: #fff;
+        border: 0;
+      }
+      
+      article {
+        background-color: #e5e5e5;
+        margin-bottom: 20px;
+        padding: 20px;
+      }
+      
+      input[type=button]:hover {background-color: #000 !important;}
+      h2 {margin-top: 0;}
+    </style>
+  <head>
+ 
+ 
+  <!-- ### BODY ### -->
+  <body>
+  
+    <h1>TP6</h1>
+    
+    <article>
+      <h2>Question 1, 2</h2>
+      <p>Demande à l’utilisateur de saisir au clavier un nom et affiche dans la console javascript "Magnifique" si le nom commence par un "M", "Nickel" si le nom commence par un "N", "Original" par un "O" et "Parfait" par un "P". Pour toute autre valeur, sera affiché dans la console javascript la phrase "Désolé, je n’ai pas d’avis."</p>
+      <input type="button" value="Lancer" onclick="go1()" style="background: #e74c3c;"/>
+    </article>
+    
+    <article>
+      <h2>Question 3</h2>
+      <p>Demande à l’utilisateur de saisir au clavier un nom et affiche dans la console javascript "Voyelle" si le nom commence par une voyelle, "Consonne" sinon.</p>
+      <input type="button" value="Lancer" onclick="go3()" style="background: #3498db;" />
+    </article>
+    
+    <article>
+      <h2>Question 4</h2>
+      <p>Demande à l’utilisateur de saisir au clavier un nombre entier positif, et affiche dans la console javascript le décompte de cet entier positif jusque 0.</p>
+      <input type="button" value="Lancer" onclick="go4()" style="background: #d68910"/>
+    </article>
+    
+    <article>
+      <h2>Question 5, 6</h2>
+      <p>Affiche dans la console et dans une fenêtre d’alerte la Suite de Syracuse correspondant au nombre 27.</p>
+      <input type="button" value="Lancer" onclick="go5()" style="background: #9b59b6;" />
+    </article>
+    
+    <article>
+      <h2>Question 7</h2>
+      <p>Demande à l’utilisateur de saisir au clavier un nombre entier positif, et affiche une liste non ordonnée de la suite de Syracuse associée.</p>
+      <input type="button" value="Lancer" onclick="go7()" style="background: #28b463;" /><br /><br />
+      <div id="result">Le résultat s'affichera ici.</div>
+    </article>
+  
+    
+    <script type='text/javascript'>
+    
+      // Fonction Suite de Syracuse
+      function syracuse(n) {
+        let i=0, r=[];
+        r.push(n);
+        while (n > 1) {
+          if (n%2 == 0) {n = n/2;} else {n = 3*n+1;}
+          r.push(n); 
+          i++;
+        }
+        return r;
+      }
+    
+      // Question 1, 2
+      function go1() {
+        let n="Mouchard";
+        n = prompt("Nom :", n);
+        switch (n.substr(0,1).toLowerCase()) {
+          case 'm': console.log('Magnifique'); break;
+          case 'n': console.log('Nickel'); break;
+          case 'o': console.log('Original'); break;
+          case 'p': console.log('Parfait'); break;
+          default: console.log('Désolé, je n’ai pas d’avis.');
+        }
+      }
+      
+      // Question 3
+      function go3() {
+        let n="Ivan";
+        const voyelles = ['a', 'e', 'i', 'o', 'u', 'y'];
+        if (voyelles.includes(prompt("Nom :",n).substr(0,1).toLowerCase())) {
+          console.log('Voyelle');
+        } else {console.log('Consonne');}
+      }
+      
+      // Question 4
+      function go4() {
+        let c=5;
+        c = prompt("Nombre :", c);
+        if (isNaN(c) || c<0) {
+          console.log('Valeur incorrecte !');
+        } else {
+          for (c; c>=0; c--) {console.log(c);}
+        }
+      }
+      
+      // Question 5,6
+      function go5() {
+        let out = 'Suite : ' + syracuse(27).join(' - ');
+        console.log(out);
+        alert(out);
+      }
+      
+      // Question 7
+      function go7() {
+        let c=12;
+        c = prompt("Nombre :", c);
+        document.getElementById("result").innerHTML ='<ul><li>' + syracuse(c).join('</li><li>') + '</li></ul>';
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+@media only screen and (max-width: 500px) {
+  #tab2 tr:nth-child(3n+1) {background-color: #abebc6;}
+  #tab2 tr:nth-child(3n) {background-color: #f1948a;}
+}
+
+@media only screen and (min-width: 501px) {
+  #tab2 tr:nth-child(even) {
+    color: #fff;
+    background-color: #999;
+  }
+  
+  #tab2 tr:nth-child(off) {
+    color: #999;
+    background-color: #fff;
+  }
+}

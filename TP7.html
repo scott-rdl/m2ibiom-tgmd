@@ -1,0 +1,183 @@
+<!--
+  Scott RIDEL Janvier 2021
+  TP4 - UE1S2 M2 IBIOM
+  Université de Rouen
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+  <!-- ### HEAD ### -->
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Scott RIDEL" />
+    <meta name="description" content="TP7 - UE1S2 M2 IBIOM" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>TP7</title>
+    <style>
+      body {
+        font-family: Helvetica;
+        background-color: #e5e5e5;
+        margin: 0 20%;
+        padding: 30px;
+      }
+      
+      input {
+        padding: 5px;
+        border-radius: 2px;
+        border: 1px solid #999;
+      }
+      
+      input[type=submit], input[type=reset]{
+        color: #fff;
+        padding: 5px 10px;
+        border: 0;
+      }
+
+      article {
+        background-color: #fff;
+        margin-bottom: 20px;
+        padding: 20px;
+      }
+
+      p {margin: 0;}
+      td {padding: 5px;}
+      h2 {margin-top: 0;}
+      .info {margin-top: 20px;}
+      #result {margin-top: 20px;}
+      .or {color: rgb(255, 136, 0)}
+      input[type=submit]:hover,input[type=reset]:hover{background-color: #000;}
+      input[type=submit]:active,input[type=reset]:active{background-color: #999;}
+      input[type=submit] {background-color: #2893ff;}
+      input[type=reset] {background-color: #ff2828;}
+    </style>
+  <head>
+ 
+ 
+  <!-- ### BODY ### -->
+  <body>
+  
+    <h1>TP6</h1>
+    
+    <article>
+      <h2>Question 1</h2>
+      <form id="q1">
+        <fieldset>
+          <legend>Formulaire</legend>
+          <table>
+            <tr>
+              <td><label for="ville">Nom :</label></td>
+              <td><input type="text"  id="ville" name="ville" value="Rouen" required /></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <input type="submit" value="Envoyer" />
+                <input type="reset" value="Annuler" />
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </form>
+      <p class="info or">Le résultat s'affiche dans la console.</p>
+    </article>
+
+    <article>
+      <h2>Question 2</h2>
+      <form id="q2">
+        <fieldset>
+          <legend>Formulaire</legend>
+          <table>
+            <tr>
+              <td><label for="nom">Nom :</label></td>
+              <td><input type="text" id="nom" name="nom" value="Mouchard" required /></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <input type="submit" value="Envoyer" />
+                <input type="reset" value="Annuler" />
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </form>
+      <p class="info or">Le résultat s'affiche dans la console.</p>
+    </article>
+
+    <article>
+      <h2>Question 3, 4</h2>
+      <form id="q3">
+        <fieldset>
+          <legend>Formulaire</legend>
+          <table>
+            <tr>
+              <td><label for="nom">Nom :</label></td>
+              <td><input type="text" id="nom" name="nom" value="Wombat" required /></td>
+            </tr>
+            <tr>
+              <td><label for="ville">Ville :</label></td>
+              <td>
+                <select id="ville">
+                  <option value="1">Paris</option>
+                  <option value="2">Rouen</option>
+                  <option value="3">Lille</option>
+                  <option value="4">Toulouse</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <input type="submit" value="Envoyer" />
+                <input type="reset" value="Annuler" />
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </form>
+      <div id="result" class="or">Le résultat s'affichera ici.</div>
+    </article>
+    
+
+    <!-- ### JAVASCRIPT ### -->
+    <script type='text/javascript'>
+      var form1 = document.getElementById("q1");
+      var form2 = document.getElementById("q2");
+      var form3 = document.getElementById("q3");
+      
+      // Question 1
+      form1.addEventListener("submit", function (event) {
+        let ville = form1.elements.ville.value;
+        console.log("Vous habitez : " + ville);
+        event.preventDefault();
+      });
+      
+      // Question 2
+      form2.addEventListener("submit", function (event) {
+        let nom = form2.elements.nom.value;
+        console.log("Vous vous appelez : " + nom);
+        event.preventDefault();
+      });
+
+      // Question 3,4
+      form3.addEventListener("submit", function (event) {
+        let nom = form3.elements.nom.value;
+        let r;
+        switch (form3.elements.ville.value) {
+          case '1': r = 'Paris, la capitale de la France.'; break;
+          case '2': r = 'Rouen, capitale de la Normandie.'; break;
+          case '3': r = 'Lille, au nord de la France.'; break;
+          case '4': r = 'Toulouse, ville du Sud-Ouest.'; break;
+          default: r = 'Ville incorrecte !';
+        }
+        console.log('Vous vous appelez : ' + nom + '\n' + r);
+        var element = document.getElementById("result");
+        element.classList.remove("or");
+        element.innerHTML = `
+          <p>Vous vous appelez <b>` + nom + `</b><br />` + r + `</p>`;
+        event.preventDefault();
+      });
+    </script>
+  </body>
+</html>
